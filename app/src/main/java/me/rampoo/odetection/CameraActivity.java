@@ -90,11 +90,11 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
 
         // convert to base64
 //        finalImageString = Base64.encodeToString(byteArray , Base64.DEFAULT);
-        stringImageBase64 = Base64.encodeToString(byteArray, Base64.DEFAULT);
+        stringImageBase64 = Base64.encodeToString(byteArray, Base64.NO_WRAP);
 
 //        finalImageString = prefix.concat(stringImageBase64);
 
-//        Toast.makeText(CameraActivity.this , finalImageString, Toast.LENGTH_LONG).show();
+        Toast.makeText(CameraActivity.this , prefix + stringImageBase64, Toast.LENGTH_LONG).show();
 
         // save it in your external storage.
 //        File imagesFolder = new File(Environment.getExternalStorageDirectory(), "HasilFoto_Kamera");
@@ -124,7 +124,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         if(v == uploadBtn){
 
-            Toast.makeText(CameraActivity.this , prefix + stringImageBase64, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(CameraActivity.this , prefix + stringImageBase64, Toast.LENGTH_SHORT).show();
 
             retrofit2.Call<ResponseBody> call = RetrofitClient.GetInstance().GetApi().Upload(prefix + stringImageBase64);
             call.enqueue(new Callback<ResponseBody>() {
