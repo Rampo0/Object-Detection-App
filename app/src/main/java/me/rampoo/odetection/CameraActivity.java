@@ -77,6 +77,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
                     break;
             }}
     }
+
     private void prosesKamera(Intent datanya) throws IOException{
         Bitmap bm;
         bm = (Bitmap) datanya.getExtras().get("data");
@@ -90,7 +91,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
         // convert to base64
 //        finalImageString = Base64.encodeToString(byteArray , Base64.DEFAULT);
         stringImageBase64 = Base64.encodeToString(byteArray, Base64.DEFAULT);
-//        String prefix = "data:image/png;base64,";
+
 //        finalImageString = prefix.concat(stringImageBase64);
 
 //        Toast.makeText(CameraActivity.this , finalImageString, Toast.LENGTH_LONG).show();
@@ -119,17 +120,11 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    public String convertBase64ToString(byte[] byteArray){
-        return Base64.encodeToString(byteArray, Base64.DEFAULT);
-    }
-
     @Override
     public void onClick(View v) {
         if(v == uploadBtn){
 
-//            String s = prefix.concat(finalImageString);
-//            tes = "asd";
-//            Toast.makeText(CameraActivity.this , finalImageString, Toast.LENGTH_SHORT).show();
+            Toast.makeText(CameraActivity.this , prefix + stringImageBase64, Toast.LENGTH_SHORT).show();
 
             retrofit2.Call<ResponseBody> call = RetrofitClient.GetInstance().GetApi().Upload(prefix + stringImageBase64);
             call.enqueue(new Callback<ResponseBody>() {
