@@ -34,6 +34,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
     Button b1;
     ImageView iv;
     Button uploadBtn;
+    private Button colorDetectBtn;
     private static final int kodekamera = 222;
     private static final int MY_PERMISSIONS_REQUEST_WRITE = 223;
     private String finalImageString;
@@ -50,7 +51,9 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
         b1 = (Button) findViewById(R.id.button);
         iv = (ImageView) findViewById(R.id.imageView);
         uploadBtn = findViewById(R.id.uploadBtn);
+        colorDetectBtn = findViewById(R.id.colorDetectBtn);
 
+        colorDetectBtn.setOnClickListener(this);
         uploadBtn.setOnClickListener(this);
 
         b1.setOnClickListener(new View.OnClickListener() {
@@ -150,6 +153,8 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
 
                 }
             });
+        }else if(v == colorDetectBtn){
+            startActivity(new Intent(CameraActivity.this , MainActivity.class));
         }
     }
 }
