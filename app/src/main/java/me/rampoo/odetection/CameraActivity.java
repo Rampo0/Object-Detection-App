@@ -35,6 +35,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
     ImageView iv;
     Button uploadBtn;
     private Button colorDetectBtn;
+    private Button templateMatchingBtn;
     private static final int kodekamera = 222;
     private static final int MY_PERMISSIONS_REQUEST_WRITE = 223;
     private String finalImageString;
@@ -55,6 +56,9 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
 
         colorDetectBtn.setOnClickListener(this);
         uploadBtn.setOnClickListener(this);
+
+        templateMatchingBtn = findViewById(R.id.templateMatchBtn);
+        templateMatchingBtn.setOnClickListener(this);
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,6 +159,8 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
             });
         }else if(v == colorDetectBtn){
             startActivity(new Intent(CameraActivity.this , MainActivity.class));
+        }else if(v == templateMatchingBtn){
+            startActivity(new Intent(CameraActivity.this , TemplateMatchingActivity.class));
         }
     }
 }

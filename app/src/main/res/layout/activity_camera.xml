@@ -67,6 +67,20 @@
             android:layout_gravity="center"
             android:text="Color Detection" />
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:layout_gravity="center">
+
+        </View>
+
+        <Button
+            android:id="@+id/templateMatchBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Template Matching" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

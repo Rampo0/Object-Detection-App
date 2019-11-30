@@ -36,7 +36,7 @@ public class TemplateMatchingActivity extends Activity implements CvCameraViewLi
     private Mat templ;
     private Mat sourceImage;
     private Mat outputMatching;
-    private int image = R.drawable.pxl;
+    private int image = R.drawable.gunting2bmp;
 
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
@@ -158,13 +158,13 @@ public class TemplateMatchingActivity extends Activity implements CvCameraViewLi
             matchScore = mmLocationResult.maxVal;
         }
 
-        Log.i(TAG , "Score : " + matchScore.toString());
-        Double threshold = 0.9d;
+//        Log.i(TAG , "Score : " + matchScore.toString());
+//        Double threshold = 0.9d;
 
         // draw rectangle on cam
-        if(matchScore > threshold) {
-            Imgproc.rectangle(mRgba, location, new Point(location.x + templ.rows(), location.y + templ.rows()), new Scalar(0, 255, 0), 5);
-        }
+//        if(matchScore > threshold) {
+            Imgproc.rectangle(mRgba, location, new Point(location.x + templ.cols(), location.y + templ.rows()), new Scalar(0, 255, 0), 5);
+//        }
         // draw circle on cam
         // Imgproc.circle(mRgba , new Point(location.x + (templ.rows() / 2) , location.y + (templ.rows() / 2)) , (int)templ.rows() ,  new Scalar(0,255,0), 10);
 
