@@ -5,7 +5,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
 
-    private final String BaseURL = "http://mobile.if.its.ac.id/ppb19/";
+//    private final String BaseURL = "http://mobile.if.its.ac.id/ppb19/";
+    private final String BaseURL = "http://10.151.254.116";
     private static RetrofitClient instance;
     private Retrofit retrofit;
 

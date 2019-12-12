@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
     <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">mobile.if.its.ac.id</domain>
+        <domain includeSubdomains="true">10.151.254.116</domain>
     </domain-config>
 </network-security-config>

@@ -17,6 +17,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
+import com.squareup.picasso.Picasso;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -90,6 +94,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
         bm = (Bitmap) datanya.getExtras().get("data");
         iv.setImageBitmap(bm);
 
+
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
 
         bm.compress(Bitmap.CompressFormat.PNG, 100, stream);
@@ -101,7 +106,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
 
 //        finalImageString = prefix.concat(stringImageBase64);
 
-        Toast.makeText(CameraActivity.this , prefix + stringImageBase64, Toast.LENGTH_LONG).show();
+//        Toast.makeText(CameraActivity.this , prefix + stringImageBase64, Toast.LENGTH_LONG).show();
 
         // save it in your external storage.
 //        File imagesFolder = new File(Environment.getExternalStorageDirectory(), "HasilFoto_Kamera");
@@ -131,9 +136,12 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         if(v == uploadBtn){
 
+            Picasso.get().load("http://10.151.254.116/static/res.png").networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).into(iv);
+
 //            Toast.makeText(CameraActivity.this , prefix + stringImageBase64, Toast.LENGTH_SHORT).show();
 
-            retrofit2.Call<ResponseBody> call = RetrofitClient.GetInstance().GetApi().Upload(prefix + stringImageBase64);
+//            retrofit2.Call<ResponseBody> call = RetrofitClient.GetInstance().GetApi().Upload(prefix + stringImageBase64);
+            retrofit2.Call<ResponseBody> call = RetrofitClient.GetInstance().GetApi().Upload(stringImageBase64);
             call.enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -148,12 +156,15 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
                     }catch (IOException e){
                         e.printStackTrace();
                     }
+
+
                 }
 
                 @Override
                 public void onFailure(Call<ResponseBody> call, Throwable t) {
                     t.printStackTrace();
-                    Toast.makeText(CameraActivity.this , "Upload Failed !! " , Toast.LENGTH_LONG).show();
+                    Toast.makeText(CameraActivity.this , t.getMessage() , Toast.LENGTH_LONG).show();
+//                    Toast.makeText(CameraActivity.this , "Upload Failed !! " , Toast.LENGTH_LONG).show();
 
                 }
             });

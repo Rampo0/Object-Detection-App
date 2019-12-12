@@ -9,7 +9,7 @@ import android.widget.Toast;
 import java.io.IOException;
 
 import me.rampoo.odetection.Api.RetrofitClient;
-import me.rampoo.odetection.Models.LoginResponse;
+//import me.rampoo.odetection.Models.LoginResponse;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
